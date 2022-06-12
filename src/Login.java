@@ -46,7 +46,7 @@ public class Login {
         JTextField userNameConfirmIn = new JTextField();
         JTextField passwordConfirmIn = new JPasswordField();
         
-        /*
+        
         
         
         //some info on purpose of the program
@@ -216,7 +216,7 @@ public class Login {
         JOptionPane.showMessageDialog(null, user.getReturnStatus(), 
             "Welcome", INFORMATION_MESSAGE); 
         
-        */
+        
         
         
                          //POE PART 2
