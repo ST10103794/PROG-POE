@@ -1,6 +1,4 @@
 
-import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JTextField;
 
 /*

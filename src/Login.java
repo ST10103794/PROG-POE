@@ -1,15 +1,9 @@
 
 import javax.swing.*;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 import java.lang.String;
 import java.util.Scanner;
 import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
-import static javax.swing.JOptionPane.OK_OPTION;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.OK_OPTION;
@@ -108,20 +102,27 @@ public class Login {
                 //username check
                 user.checkUserName();
                 
-                if(user.checkUserName() ==true){
+                //password check
+                user.checkPasswordComplexity();
+                
+                if(user.checkPasswordComplexity() ==true && 
+                        user.checkUserName() ==true){
+                    JOptionPane.showMessageDialog(null, "Username and password "
+                        + "successfully registered", 
+                        "successfull", INFORMATION_MESSAGE);
+                }else if(user.checkUserName() ==true && 
+                        user.checkPasswordComplexity() ==false){
                     JOptionPane.showMessageDialog(null, "Username successfully "
                         + "registered", 
                         "successfully", INFORMATION_MESSAGE);
-                }
-                
-                //password check
-                user.checkPasswordComplexity(); 
-                
-                if(user.checkPasswordComplexity() ==true){
+                }else if(user.checkPasswordComplexity() ==true && 
+                        user.checkUserName() ==false){
                     JOptionPane.showMessageDialog(null, "Password successfully "
                         + "registered", 
                         "successfull", INFORMATION_MESSAGE);
                 }
+                
+                
                 
                 //registration message
             user.registerUser();
@@ -340,13 +341,24 @@ public class Login {
                             default:
                                 break;
                         }
-                    }   JOptionPane.showMessageDialog(null, 
-                            "Task successfully captured", "",INFORMATION_MESSAGE);
+                    
+                        JOptionPane.showMessageDialog(null, 
+                           "Task successfully captured", "",INFORMATION_MESSAGE);
+                    
+                         process.setPrintDetails(process.printTaskDetails(i));
+                        JOptionPane.showMessageDialog(null, process.getPrintDetails());
+                        
+                    }   
                     process.setTotalTime(process.returnTotalHours());
+                    
+                    /*
                     for(int i=0; i< process.getTaskCount(); i++){
                         process.setPrintDetails(process.printTaskDetails(i));
                         JOptionPane.showMessageDialog(null, process.getPrintDetails());
-                    }   JOptionPane.showMessageDialog(null, 
+                    }
+                    */
+                    
+                    JOptionPane.showMessageDialog(null, 
                             "The total amount of time taken for all tasks is "
                                     +process.getTotalTime() );
                     
